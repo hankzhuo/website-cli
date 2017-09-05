@@ -1,3 +1,5 @@
 # express-cli
 
-利用 express 搭起来的架子
+一个居于 express+React+Webpack 网页架子
+
+持续更新中。。。
