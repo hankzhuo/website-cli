@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "NODE_DEV=development nodemon app.js",
+    "watch": "NODE_ENV=development webpack -w",
+    "build_test": "NODE_ENV=test webpack --optimize-minimize"
   },
   "author": "hank",
   "license": "ISC",
@@ -15,5 +17,17 @@
     "express": "^4.15.4",
     "express-session": "^1.15.5",
     "lodash": "^4.17.4"
+  },
+  "devDependencies": {
+    "assets-webpack-plugin": "^3.5.1",
+    "clean-webpack-plugin": "^0.1.16",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "nodemon": "^1.12.0",
+    "postcss-loader": "^2.0.6",
+    "style-loader": "^0.18.2",
+    "uglifyjs-webpack-plugin": "^0.4.6",
+    "webpack": "^3.5.5"
   }
 }
