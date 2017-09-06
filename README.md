@@ -15,4 +15,4 @@
  - views
  - ...
 
-持续更新中，欢迎 Fork 或 stars
+持续更新中，欢迎 Fork 或 stars。
