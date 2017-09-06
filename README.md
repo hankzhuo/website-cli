@@ -7,10 +7,11 @@
  - 路由
  - 中间件 middleware
  - session 及将 session 存储于 redis
+ - 静态资源打包(webpack)
+
 
 ## 将更新的内容：
  
- - 静态资源打包(webpack)
  - views
  - ...
 
