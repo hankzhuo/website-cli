@@ -1,6 +1,13 @@
 # website-cli
 
-一个居于 express 网页架子
+一个居于 express 简单网页
+
+# 启动
+
+ - `npm install`
+ - 安装 redis 并启动 redis。[下载redis](https://redis.io/download)
+ - 浏览器打开测试页 [http://localhost:3000/test](http://localhost:3000/test)
+ - 预览其他页面
 
 ## 已更新的内容：
 
