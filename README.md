@@ -6,6 +6,8 @@
 
  - `npm install`
  - 安装 redis 并启动 redis。[下载redis](https://redis.io/download)
+ - `npm run dev`
+ - `npm run watch`
  - 浏览器打开测试页 [localhost:3000/test](http://localhost:3000/test)
  - 预览其他页面
 
