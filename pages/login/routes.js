@@ -1,41 +1,44 @@
-const express = require('express');
+import express from 'express'
+import render from '../../components/render'
+import SignUp from './SignUp'
+import SignIn from './SignIn'
+
 const router = express.Router()
 
 // 登录页面
-router.get('/signin',(req, res) => {
-  if (req.session && req.session.authToken) {
+router.get('/signin', (req, res) => {
+  if (req.session && req.session.user) {
     res.redirect('/signup')
     return
   }
-  
-  res.send('登录页输入用户名密码登录')
+
+  render(res, SignIn, {})
 })
 
 // 登录提交
-router.post('/signin',(req, res) => {
+router.post('/signin', (req, res) => {
+  // 待写，先验证账户密码是否正确，然后发送到数据库，登录
   // 设置 cookie
   const uidID = 'xxx'
-  res.cookie('uidID', uidID, {maxAge: 10000, httpOnly: true})
-  req.session.authToken = 'test authToken'
-  
-  res.send('登录页输入用户名密码登录')
+  res.cookie('uidID', uidID, { maxAge: 10000, httpOnly: true })
+  req.session.user = 'user'
 })
 
 // 注册页面
-router.get('/signup',(req, res) => {
-  if (req.session && req.session.authToken) {
+router.get('/signup', (req, res) => {
+  if (req.session && req.session.user) {
     res.redirect('/')
     return
   }
-  res.send('获取注册页')
+
+  render(res, SignUp, {})
 })
 
 // 注册提交
-router.post('/signup',(req, res) => {
-  // 获取前端用户注册信息，通过 req 获取
-  // 注册时, 实际环境中 authToken 保存着用户唯一标识符，保存在数据库中，此处做测试用
-  req.session.authToken = 'test authToken'
-  res.send('注册页面提交资料')
+router.post('/signup', (req, res) => {
+  // 待写，注册，可以把用户身份信息储存于数据库中
+  // 此处可以设置一个user，以验证用户是否登录的凭证
+  req.session.user = 'user'
 })
 
 module.exports = router

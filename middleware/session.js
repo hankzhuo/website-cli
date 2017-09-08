@@ -1,5 +1,8 @@
-const session = require('express-session')
-const RedisStore = require('connect-redis')(session) // 传 express-session 进 connect-redis 储存起来
+import session from 'express-session'
+import connectRedis from 'connect-redis'
+
+// 传 express-session 进 connect-redis 储存起来
+const RedisStore = connectRedis(session)
 
 const options = {
   host: '127.0.0.1',
@@ -7,37 +10,37 @@ const options = {
   db: 0,
 }
 
-module.exports = function(options) {
+module.exports = function () {
   const sessionMiddleware = session({
     store: new RedisStore(options),
     cookie: {
-      domain: 'localhost:3000'
+      domain: 'localhost:3000',
     },
     secret: 'keyboard cat',
     saveUninitialized: true,
-    resave: true  
+    resave: true,
   })
 
   return function (req, res, next) {
-    var tries = 3
+    let tries = 3
     function lookupSession(error) {
       if (error) {
         return next(error)
       }
-  
+
       tries -= 1
-  
+
       if (req.session !== undefined) {
         return next()
       }
-  
+
       if (tries < 0) {
         return next(new Error('oh no'))
       }
-  
+
       sessionMiddleware(req, res, lookupSession)
     }
-  
+
     lookupSession()
   }
 }

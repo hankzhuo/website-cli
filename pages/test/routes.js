@@ -1,13 +1,9 @@
-const express = require('express');
+import express from 'express'
+
 const router = express.Router()
 
-router.get('/',(req, res) => {
-  if (req.session && req.session.authToken) {
-    res.send('已经登录 test 页')
-    next()
-  }
-  // 没注册跳去登录页
-  res.redirect('/signin')  
+router.get('/', (req, res) => {
+  res.send('这是一个 test 页')
 })
 
 module.exports = router

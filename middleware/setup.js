@@ -1,18 +1,15 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const cookieParser = require('cookie-parser')
-const env = require('./config/env')
-const session = require('./config/session')
-const isAuthToken = require('./isAuthToken')
+import express from 'express'
+import bodyParser from 'body-parser'
+import cookieParser from 'cookie-parser'
+import env from './env'
+import session from './session'
+import isLogin from './isLogin'
 
-const app = express()
-
-module.exports = function(app) {
-  
+module.exports = function (app) {
   // 设置环境变量
   app.set('env', env)
   // 防止被攻击，禁用
-  app.disable('x-powered-by')  
+  app.disable('x-powered-by')
 
   // session 设置，用 redis 长时间存储
   app.use(session())
@@ -20,9 +17,9 @@ module.exports = function(app) {
   // 设置头部 headers
   app.use((req, res, next) => {
     const headers = {}
-    // 如果登录了，添加 authToken 头部
-    if (req.session && req.session.authToken) {
-      headers['X-Auth-Token'] = req.session.authToken
+    // 如果登录了，给 session 添加 user
+    if (req.session && req.session.user) {
+      headers['X-Auth-Token'] = req.session.user
     }
     next()
   })
@@ -32,7 +29,7 @@ module.exports = function(app) {
   app.use(cookieParser())
 
   // 检查登录态
-  app.use(isAuthToken)
+  app.use(isLogin)
 
   // 错误模板
   // 404模板
