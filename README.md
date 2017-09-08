@@ -1,6 +1,6 @@
 # website-cli
 
-一个居于 express 简单网页
+一个居于 express 网页架子，目的是想把构建一个网页所需要的都写上来，欢迎大家 star 或 fork。
 
 # 启动
 
