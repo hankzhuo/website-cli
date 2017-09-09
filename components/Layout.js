@@ -2,8 +2,9 @@ import React from 'react'
 import assets from '../webpack-assets.json'
 
 const Layout = ({ title, children }) => {
-  const testCss = assets.test.css
-  const testJs = assets.test.js
+  const testCss = assets.web.css
+  const testJs = assets.web.js
+  console.log(testJs)
   return (
     <html lang="zh-CN">
     <head>

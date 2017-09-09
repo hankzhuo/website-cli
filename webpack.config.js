@@ -21,11 +21,11 @@ if (process.argv.indexOf('--optimize-minimize') > -1) {
 
 module.exports = {
   entry: {
-    test: './public/index.js',
+    web: './public/index.js',
   },
   output: {
     path: path.join(__dirname, 'dist'),
-    publicPath: '/test/public/',
+    publicPath: '/public/',
     filename: 'js/[name].[chunkhash:8].js',
     chunkFilename: '[id].[chunkhash:8].js',
   },
